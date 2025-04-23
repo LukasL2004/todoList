@@ -1,0 +1,6 @@
+<div class="user_card">
+<button [class.active]="select()" (click)="selectedUser()" class="users_button ">
+  <img [src]="imgPath(users().avatar)" alt="">
+  <p>{{users().name}}</p>
+</button>
+</div>

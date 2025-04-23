@@ -1,0 +1,24 @@
+<div class="login">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+      <h1>Login</h1>
+      @if(emailErrorMessage()){
+        <p>Your email is invalid</p>
+      }
+      @if(form.value.email === '' && form.controls.email.touched){
+        <p>The email is required</p>
+      }
+      <label for="email">Email</label>
+      <input type="email"  [formControl]="form.controls.email">
+      <label for="password">Password</label>
+      <input type="password"  [formControl]="form.controls.password">
+      @if(passwordErrorMessage()){
+        <p>Your password is invalid</p>
+      }
+
+      <button routerLink="/userList"  type="submit" class="button">LOGIN</button>
+
+
+    </form>
+
+</div>
