@@ -3,6 +3,7 @@ import { NewTaskData, Task } from './tasks.model';
 import { TaskBodyComponent } from './task-body/task-body.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { TasksService } from './tasks.service';
+import { Dummy_users } from '../../dummy_users';
 
 @Component({
   selector: 'app-tasks',
@@ -11,8 +12,7 @@ import { TasksService } from './tasks.service';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  userId = input.required<string>();
-  name = input.required<string>();
+  user = Dummy_users;
 
   private taskService = inject(TasksService);
 

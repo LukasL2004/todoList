@@ -9,9 +9,9 @@
   border-radius: 30px;
   /* background: linear-gradient(#00c6ff, #0072ff); */
   background: transparent;
-  transition: background 0.3s ease, color 0.3s ease;
+  /* transition: background 0.3s ease, color 0.3s ease; */
   border: 0;
-  /* margin:0.5rem */
+  margin:0.5rem
 }
 img{
   width: 40px;
@@ -20,10 +20,13 @@ img{
 }
 p{
   font-size: 0.8rem;
+  color: aqua;
+  margin-left:1rem ;
 }
 
 button:hover,
 button:active,
+
 .active {
   background: linear-gradient(#00c6ff, #0072ff);
   color: #0000;

@@ -10,7 +10,7 @@ import { AddTaskComponent } from './components/tasks/add-task/add-task.component
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, UsersComponent, TasksComponent, RouterOutlet],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
