@@ -17,7 +17,7 @@ export class TasksComponent {
   private taskService = inject(TasksService);
 
   get userTask() {
-    return this.taskService.getUserTasks(this.user[1].id);
+    return this.taskService.getUserTasks(this.user.id);
   }
 
   addTaskStatus = false;
