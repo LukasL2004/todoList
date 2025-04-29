@@ -8,7 +8,7 @@
     <button (click)="addTask()">Add Task</button>
   </header>
   @if(userTask.length===0){
-    <h1>Hello {{name()}} you don't have any tasks yet</h1>
+    <h1>Hello {{user.name}} you don't have any tasks yet</h1>
   }
   <ul>
     @for (task of userTask;track task.id){

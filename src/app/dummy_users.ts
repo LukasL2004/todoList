@@ -15,12 +15,12 @@ export const Dummy_users = [
     avatar: 'David.jpg',
   },
   {
-    id: 'u5',
+    id: 'u4',
     name: 'Martin',
     avatar: 'Martin.jpg',
   },
   {
-    id: 'u4',
+    id: 'u5',
     name: 'Manager',
     avatar: 'Manager.jpg',
   },

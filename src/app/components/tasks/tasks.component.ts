@@ -17,13 +17,15 @@ export class TasksComponent {
   private taskService = inject(TasksService);
 
   get userTask() {
-    return this.taskService.getUserTasks(this.userId());
+    return this.taskService.getUserTasks(this.user[1].id);
   }
+
   addTaskStatus = false;
 
   addTask() {
     return (this.addTaskStatus = true);
   }
+
   cancelTask() {
     return (this.addTaskStatus = false);
   }
