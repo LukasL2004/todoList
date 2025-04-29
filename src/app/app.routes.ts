@@ -23,6 +23,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: 'todoList/:userId/:name/tasks', component: TasksComponent },
+      { path: 'todoList', component: TasksComponent },
     ],
   },
 ];
