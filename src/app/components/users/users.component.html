@@ -1,9 +1,8 @@
 @for(users of user;track users.id){
   <div class="user_card">
-  <button [ngClass]="{active: selectedUserId===users.id }"  (click)="selectUser(users.id)" class="users_button ">
+  <button [ngClass]="{active: selectedUserId===users.id }"   (click)="selectUser(users.id,users.name)" class="users_button ">
     <img [src]="imgPath(users.avatar)" alt="">
     <p>{{users.name}}</p>
   </button>
   </div>
-
 }

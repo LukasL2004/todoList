@@ -1,5 +1,5 @@
 @if(addTaskStatus){
-  <app-add-task (close)="cancelTask()" [userId]="user[1].id"/>
+  <app-add-task (close)="cancelTask()" [userId]="userId!"/>
 }
 
 
@@ -8,7 +8,7 @@
     <button (click)="addTask()">Add Task</button>
   </header>
   @if(userTask.length===0){
-    <h1>Hello {{user}} you don't have any tasks yet</h1>
+    <h1>Hello {{userName}} you don't have any tasks yet</h1>
   }
   <ul>
     @for (task of userTask;track task.id){
