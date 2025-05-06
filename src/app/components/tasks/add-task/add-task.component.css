@@ -1,4 +1,4 @@
-/* Backdrop styling */
+
 .backdrop {
   position: fixed;
   background-color: rgba(31, 39, 39, 0.8);
@@ -9,7 +9,7 @@
   z-index: 2;
 }
 
-/* Form styling */
+
 form {
   position: absolute;
   display: flex;
@@ -28,7 +28,6 @@ form {
   user-select: none;
 }
 
-/* Form header */
 .form-header {
   display: flex;
   justify-content: space-between;
@@ -46,7 +45,7 @@ form {
 }
 
 
-/* Input section styling */
+
 .input-section {
   margin-bottom: 1.5rem;
   width: 100%;
@@ -80,7 +79,7 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(64, 224, 208, 0.2);
 }
 
-/* Button styling */
+
 .form-actions {
   display: flex;
   justify-content: flex-end;
