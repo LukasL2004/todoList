@@ -1,5 +1,4 @@
 import { Component, inject, input } from '@angular/core';
-import { NewTaskData, Task } from './tasks.model';
 import { TaskBodyComponent } from './task-body/task-body.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { TasksService } from './tasks.service';

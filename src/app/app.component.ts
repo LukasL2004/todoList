@@ -5,8 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterOutlet } from '@angular/router';
 import { UsersComponent } from './components/users/users.component';
 import { Dummy_users } from './dummy_users';
-import { TasksComponent } from './components/tasks/tasks.component';
-import { AddTaskComponent } from './components/tasks/add-task/add-task.component';
+import { TasksComponent } from './components/Tasks/tasks.component';
 
 @Component({
   selector: 'app-root',
