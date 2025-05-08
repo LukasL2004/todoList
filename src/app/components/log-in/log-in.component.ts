@@ -66,10 +66,34 @@ export class LogInComponent {
       this.form.controls.password.value === 'manager1'
     );
   }
-  employeeLogIn() {
+  AdaLogIn() {
     return (
-      this.form.controls.email.value === 'employee@todo.com' &&
-      this.form.controls.password.value === 'employee1'
+      this.form.controls.email.value === 'ada@todo.com' &&
+      this.form.controls.password.value === 'ada1'
+    );
+  }
+  AlexLogIn() {
+    return (
+      this.form.controls.email.value === 'alex@todo.com' &&
+      this.form.controls.password.value === 'alex1'
+    );
+  }
+  DavidLogIn() {
+    return (
+      this.form.controls.email.value === 'david@todo.com' &&
+      this.form.controls.password.value === 'david1'
+    );
+  }
+  MartinLogIn() {
+    return (
+      this.form.controls.email.value === 'martin@todo.com' &&
+      this.form.controls.password.value === 'martin1'
+    );
+  }
+  EmilyLogIn() {
+    return (
+      this.form.controls.email.value === 'emily@todo.com' &&
+      this.form.controls.password.value === 'emily1'
     );
   }
 
@@ -79,13 +103,27 @@ export class LogInComponent {
     if (this.managerLogIn()) {
       this.router.navigate(['/todoList']);
       this.authService.setRole('manager');
-    } else if (this.employeeLogIn()) {
+    } else if (this.AdaLogIn()) {
       this.router.navigate(['/todoList']);
       this.authService.setRole('employee');
-    } else if (
-      !this.managerLogIn() ||
-      (!this.employeeLogIn() && this.form.valid)
-    ) {
+      this.authService.setId('u1');
+    } else if (this.AlexLogIn()) {
+      this.router.navigate(['/todoList']);
+      this.authService.setRole('employee');
+      this.authService.setId('u2');
+    } else if (this.DavidLogIn()) {
+      this.router.navigate(['/todoList']);
+      this.authService.setRole('employee');
+      this.authService.setId('u3');
+    } else if (this.MartinLogIn()) {
+      this.router.navigate(['/todoList']);
+      this.authService.setRole('employee');
+      this.authService.setId('u4');
+    } else if (this.EmilyLogIn()) {
+      this.router.navigate(['/todoList']);
+      this.authService.setRole('employee');
+      this.authService.setId('u5');
+    } else if (!this.managerLogIn() || (!this.AdaLogIn() && this.form.valid)) {
       this.errorMessage = 'Invalid credentials';
     }
 
