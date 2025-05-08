@@ -1,30 +1,45 @@
-import { Component, inject, input } from '@angular/core';
-import { NewTaskData, Task } from './tasks.model';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { TaskBodyComponent } from './task-body/task-body.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { TasksService } from './tasks.service';
+import { ActivatedRoute } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AuthService } from '../../auth.service';
 
 @Component({
-  selector: 'app-tasks',
+  selector: 'app-tasks-manager',
   imports: [TaskBodyComponent, AddTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
-export class TasksComponent {
-  userId = input.required<string>();
-  name = input.required<string>();
+export class TasksComponent implements OnInit {
+  userId: string | null = null;
+  userName: string | null = null;
+  destroyRef = inject(DestroyRef);
 
   private taskService = inject(TasksService);
+  constructor(private route: ActivatedRoute, public authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.route.paramMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((param) => {
+        this.userId = param.get('userId');
+        this.userName = param.get('name');
+      });
+  }
 
   get userTask() {
-    return this.taskService.getUserTasks(this.userId());
+    return this.taskService.getUserTasks(this.userId!);
   }
+
   addTaskStatus = false;
 
   addTask() {
-    return (this.addTaskStatus = true);
+    this.addTaskStatus = true;
   }
+
   cancelTask() {
-    return (this.addTaskStatus = false);
+    this.addTaskStatus = false;
   }
 }

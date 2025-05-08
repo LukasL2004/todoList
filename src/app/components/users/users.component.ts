@@ -1,22 +1,30 @@
 import { Component, input, output } from '@angular/core';
 import { type user } from './users.model';
+import { Dummy_users } from '../../dummy_users';
+import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css',
 })
 export class UsersComponent {
-  users = input.required<user>();
-  select = input<boolean>();
-  selected = output<string>();
+  user = Dummy_users;
+  selectedUserId: string | null = null;
+  selectedUserName: string | null = null;
+
+  constructor(private router: Router) {}
 
   imgPath(avatar: string) {
     return 'users/' + avatar;
   }
 
-  selectedUser() {
-    this.selected.emit(this.users().id);
+  selectUser(id: string, name: string) {
+    this.selectedUserId = id;
+    this.selectedUserName = name;
+    // this.selectUser = id;
+    this.router.navigate(['/todoList', id, name, 'tasks']);
   }
 }

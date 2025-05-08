@@ -8,6 +8,9 @@
       @if(form.value.email === '' && form.controls.email.touched){
         <p>The email is required</p>
       }
+      @if(errorMessage){
+        <p>{{errorMessage}}</p>
+      }
       <label for="email">Email</label>
       <input type="email"  [formControl]="form.controls.email">
       <label for="password">Password</label>
@@ -16,7 +19,7 @@
         <p>Your password is invalid</p>
       }
 
-      <button routerLink="/userList"  type="submit" class="button">LOGIN</button>
+      <button type="submit" class="button">LOGIN</button>
 
 
     </form>

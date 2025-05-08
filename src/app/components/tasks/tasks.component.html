@@ -1,22 +1,29 @@
-@if(addTaskStatus){
-  <app-add-task (close)="cancelTask()" [userId]="userId()"/>
-}
-
-
-<div class="task-card">
-  <header>
-    <button (click)="addTask()">Add Task</button>
-  </header>
-  @if(userTask.length===0){
-    <h1>Hello {{name()}} you don't have any tasks yet</h1>
+@if(userId === null){
+  <p>Click on a user to see his tasks</p>
+}@else {
+  @if(addTaskStatus){
+    <app-add-task (close)="cancelTask()" [userId]="userId!"/>
   }
-  <ul>
-    @for (task of userTask;track task.id){
-      <li>
-        <app-task-body [tasks]="task"/>
-      </li>
+
+
+  <div class="task-card">
+    <header>
+      @if(authService.manager()){
+        <button  (click)="addTask()">Add Task</button>
+      }
+    </header>
+    @if(userTask.length===0){
+      <h1>Hello {{userName}} you don't have any tasks yet</h1>
     }
+    <ul>
+      @for (task of userTask;track task.id){
+        <li>
+          <app-task-body [tasks]="task"/>
+        </li>
+      }
 
 
-  </ul>
-</div>
+    </ul>
+  </div>
+
+}

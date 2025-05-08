@@ -1,0 +1,26 @@
+main {
+  width: 100%;
+  max-width: 50rem;
+  margin: auto;
+  display: grid;
+  grid-auto-flow: row;
+  /* gap: 2rem; */
+  position: relative;
+  z-index: -1;
+  list-style: none;
+}
+
+ul{
+  width: 95%;
+  display: flex;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  overflow: auto;;
+ }
+
+ app-users{
+  display: flex;
+  overflow: auto;
+  width: 100%;
+ }
