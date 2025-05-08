@@ -21,7 +21,7 @@ export const Dummy_users = [
   },
   {
     id: 'u5',
-    name: 'Manager',
+    name: 'Emily',
     avatar: 'Manager.jpg',
   },
 ];

@@ -8,7 +8,9 @@
 
   <div class="task-card">
     <header>
-      <button (click)="addTask()">Add Task</button>
+      @if(authService.manager()){
+        <button  (click)="addTask()">Add Task</button>
+      }
     </header>
     @if(userTask.length===0){
       <h1>Hello {{userName}} you don't have any tasks yet</h1>

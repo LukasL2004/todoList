@@ -4,9 +4,10 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { TasksService } from './tasks.service';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AuthService } from '../../auth.service';
 
 @Component({
-  selector: 'app-tasks',
+  selector: 'app-tasks-manager',
   imports: [TaskBodyComponent, AddTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
@@ -17,7 +18,7 @@ export class TasksComponent implements OnInit {
   destroyRef = inject(DestroyRef);
 
   private taskService = inject(TasksService);
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, public authService: AuthService) {}
 
   ngOnInit(): void {
     this.route.paramMap

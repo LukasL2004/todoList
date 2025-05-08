@@ -3,7 +3,6 @@ import { type user } from './users.model';
 import { Dummy_users } from '../../dummy_users';
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
-import { TasksComponent } from '../tasks/tasks.component';
 
 @Component({
   selector: 'app-users',
