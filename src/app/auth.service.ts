@@ -5,13 +5,18 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private userRole: 'manager' | 'employee' | null = null;
+  private userID: string = '';
 
   setRole(role: 'manager' | 'employee') {
     this.userRole = role;
   }
 
-  getRole() {
-    return this.userRole;
+  setId(Id: string) {
+    this.userID = Id;
+  }
+
+  getID() {
+    return this.userID;
   }
 
   manager(): boolean {

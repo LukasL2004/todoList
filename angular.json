@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Personal-project": {
+    "personal-project": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Personal-project:build:production"
+              "buildTarget": "personal-project:build:production"
             },
             "development": {
-              "buildTarget": "Personal-project:build:development"
+              "buildTarget": "personal-project:build:development"
             }
           },
           "defaultConfiguration": "development"

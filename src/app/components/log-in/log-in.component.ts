@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 function mustContainANumber(control: AbstractControl) {
   const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -31,6 +32,8 @@ function mustContainANumber(control: AbstractControl) {
 export class LogInComponent {
   errorMessage = '';
 
+  auth = inject(Auth);
+
   form = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.email, Validators.required],
@@ -43,6 +46,9 @@ export class LogInComponent {
       ],
     }),
   });
+
+  email = this.form.value.email;
+  password = this.form.value.password;
 
   emailErrorMessage() {
     return (
@@ -66,29 +72,31 @@ export class LogInComponent {
       this.form.controls.password.value === 'manager1'
     );
   }
-  employeeLogIn() {
-    return (
-      this.form.controls.email.value === 'employee@todo.com' &&
-      this.form.controls.password.value === 'employee1'
-    );
+
+  loggedInSuccessfully() {
+    this.router.navigate(['/todoList']);
   }
 
   constructor(private router: Router, private authService: AuthService) {}
 
   onSubmit() {
-    if (this.managerLogIn()) {
-      this.router.navigate(['/todoList']);
-      this.authService.setRole('manager');
-    } else if (this.employeeLogIn()) {
-      this.router.navigate(['/todoList']);
-      this.authService.setRole('employee');
-    } else if (
-      !this.managerLogIn() ||
-      (!this.employeeLogIn() && this.form.valid)
-    ) {
-      this.errorMessage = 'Invalid credentials';
-    }
+    signInWithEmailAndPassword(
+      this.auth,
+      this.form.value.email!,
+      this.form.value.password!
+    )
+      .then((response) => {
+        const user = response.user;
+        const isManager = user.email === 'manager@todo.com';
+        const employee = user.uid;
 
-    console.log(this.form);
+        this.authService.setRole(isManager ? 'manager' : 'employee');
+        this.authService.setId(employee);
+
+        this.loggedInSuccessfully();
+      })
+      .catch((error) => console.error(error));
   }
+
+  // console.log(this.form);
 }
