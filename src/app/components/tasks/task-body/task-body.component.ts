@@ -2,10 +2,11 @@ import { Component, inject, input } from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { NewTaskData, Task } from '../tasks.model';
 import { AuthService } from '../../../auth.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-body',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './task-body.component.html',
   styleUrl: './task-body.component.css',
 })

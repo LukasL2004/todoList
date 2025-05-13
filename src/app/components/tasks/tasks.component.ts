@@ -5,19 +5,25 @@ import { TasksService } from './tasks.service';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../auth.service';
+import { Observable, of } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-tasks-manager',
-  imports: [TaskBodyComponent, AddTaskComponent],
+  standalone: true,
+  imports: [TaskBodyComponent, AddTaskComponent, AsyncPipe],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent implements OnInit {
   userId: string | null = null;
   userName: string | null = null;
-  destroyRef = inject(DestroyRef);
+  userTask: Observable<any[]> = of([]);
+  addTaskStatus = false;
 
+  destroyRef = inject(DestroyRef);
   private taskService = inject(TasksService);
+
   constructor(private route: ActivatedRoute, public authService: AuthService) {}
 
   ngOnInit(): void {
@@ -26,14 +32,12 @@ export class TasksComponent implements OnInit {
       .subscribe((param) => {
         this.userId = param.get('userId');
         this.userName = param.get('name');
+
+        if (this.userId) {
+          this.userTask = this.taskService.getUserTasks(this.userId);
+        }
       });
   }
-
-  get userTask() {
-    return this.taskService.getUserTasks(this.userId!);
-  }
-
-  addTaskStatus = false;
 
   addTask() {
     this.addTaskStatus = true;

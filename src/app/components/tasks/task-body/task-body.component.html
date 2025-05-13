@@ -1,8 +1,8 @@
 <article>
   <h2>{{tasks().title}}</h2>
-  <time >{{tasks().dueDate}}</time>
+  <time >{{tasks().dueDate | date:'MM/dd/yyyy':'UTC'}}</time>
   <p>{{tasks().description}}</p>
-  @if(tasks().userId === authService.getID()){
+  @if(tasks().userId === authService.getID() || authService.manager()){
     <p class="button-position"  ><button (click)="removeTask()">Completed</button></p>
   }
 </article>
